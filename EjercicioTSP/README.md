@@ -41,7 +41,7 @@ Se utilizó un conjunto de **ocho ciudades**, representadas mediante coordenadas
 
 En Python:
 ```python
-ciudades = [(0, 0), (2, 3), (5, 4), (1, 6), (4, 7)]
+ciudades = [(0, 0), (2, 3), (5, 4), (1, 6), (4, 7), (2, 1), (4, 6), (5, 5)]
 ```
 
 ---
