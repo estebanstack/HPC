@@ -25,7 +25,7 @@ Este laboratorio, por tanto, es un buen ejemplo para observar cómo el paralelis
 ## 3. Metodología
 
 ### 3.1 Datos
-Se utilizó un conjunto de **cinco ciudades**, representadas mediante coordenadas en el plano (x, y):
+Se utilizó un conjunto de **ocho ciudades**, representadas mediante coordenadas en el plano (x, y):
 
 | Ciudad | Coordenada (x, y) |
 |:-------:|:----------------:|
@@ -34,6 +34,10 @@ Se utilizó un conjunto de **cinco ciudades**, representadas mediante coordenada
 | 3 | (5, 4) |
 | 4 | (1, 6) |
 | 5 | (4, 7) |
+| 6 | (2, 1) |
+| 7 | (4, 6) |
+| 8 | (5, 5) |
+
 
 En Python:
 ```python
@@ -100,18 +104,11 @@ mejor_global = min(resultados, key=lambda r: r[1])
 ## 4. Resultados
 
 ### 4.1 Ejecución Secuencial
-```
-Mejor ruta: (0, 1, 2, 4, 3)
-Distancia mínima: 17.62
-Tiempo secuencial: 2.341 segundos
-```
+<img width="518" height="112" alt="image" src="https://github.com/user-attachments/assets/4bcc4fe6-82a7-4196-a639-e4675c71c07d" />
 
-### 4.2 Ejecución Paralela (4 procesos)
-```
-Mejor ruta: (0, 1, 2, 4, 3)
-Distancia mínima: 17.62
-Tiempo paralelo: 0.813 segundos
-```
+
+### 4.2 Ejecución Paralela
+<img width="511" height="110" alt="image" src="https://github.com/user-attachments/assets/84c8fe67-c62b-4007-93d1-31723d07f342" />
 
 ---
 
