@@ -69,35 +69,64 @@ Los experimentos se ejecutaron en un equipo con las siguientes especificaciones:
 
 ### 3.4 Explicación de los Algoritmos
 
-#### a. Algoritmo Secuencial
-- Genera todas las permutaciones posibles de las ciudades (fijando una ciudad inicial).
-- Calcula la distancia total de cada ruta mediante la fórmula euclidiana.
-- Guarda la ruta con menor distancia total.
-- Mide el tiempo total de ejecución con `time()`.
+En esta sección se explican detalladamente los dos algoritmos implementados en Python: tsp_secuencial.py y tsp_paralelo.py
+Ambos resuelven el Problema del Viajero mediante fuerza bruta probando todas las rutas posibles
+La diferencia entre ambos es cómo se ejecutan las permutaciones: uno las ejecuta en un solo proceso y el otro divide el trabajo en varios procesos paralelos
 
-**Pseudocódigo:**
+#### a. Algoritmo Secuencial
+Este algoritmo recorre todas las posibles rutas (permutaciones) que se pueden generar con las ciudades
+
+##### Funcionamiento:
+
+  - Se genera una lista de índices de ciudades: indices = [0,1,2,...]
+
+  - Con itertools.permutations(indices) se generan todas las rutas posibles.
+
+  - Para cada ruta se calcula su distancia total, utilizando la fórmula de distancia euclidiana.
+
+  - El algoritmo va guardando la ruta con la distancia más corta encontrada.
+
+  - Se usa time.time() para medir cuánto demora el proceso completo.
+
+**Idea del algoritmo**
 ```python
-for ruta in permutaciones:
-    distancia = calcular_distancia(ruta)
-    if distancia < mejor_distancia:
+for ruta in todas_las_permutaciones:
+    distancia = distancia_total(ruta)
+    si distancia es menor que mejor_distancia:
         mejor_ruta = ruta
 ```
 
-#### b. Algoritmo Paralelo
-- Divide las rutas posibles en sublistas, asignando una parte a cada proceso.
-- Cada proceso evalúa sus rutas de manera independiente.
-- Se combinan los resultados locales para obtener la mejor ruta global.
-- Mide el tiempo de ejecución y calcula el *speedup*:
-  \[
-  S = \frac{T_{secuencial}}{T_{paralelo}}
-  \]
+##### Conclusión secuencial:
+Todo el trabajo lo hace un solo proceso, por eso es simple pero mientras más ciudades haya, la cantidad de rutas crece factorialmente → aumenta mucho el tiempo.
 
-**Pseudocódigo:**
+#### b. Algoritmo Paralelo
+Este código hace lo mismo que el secuencial, pero divide el espacio de rutas en varias partes y cada parte es calculada por un proceso distinto usando multiprocessing
+
+##### Funcionamiento:
+
+  - Igual que el secuencial, genera TODAS las permutaciones posibles.
+
+  - Usa dividir_rutas() para dividir esa lista en N subconjuntos (donde N es la cantidad de procesos).
+
+  - Cada subconjunto se asigna a un proceso del Pool() para que calcule la mejor ruta dentro de ese subconjunto.
+
+  - Luego se comparan los resultados de todos los procesos y se selecciona el mejor total.
+
+  - También se mide el tiempo completo con time.time().
+
+**Idea del algoritmo:**
 ```python
-with Pool(processes=4) as pool:
-    resultados = pool.map(calcular_mejor_ruta, subconjuntos)
-mejor_global = min(resultados, key=lambda r: r[1])
+conjunto_rutas = todas_las_permutaciones
+subconjuntos = dividir(conjunto_rutas, numero_procesos)
+
+with Pool as pool:
+    resultados_locales = pool.map(mejor_en_subconjunto, subconjuntos)
+
+mejor_global = min(resultados_locales)
 ```
+##### Conclusión paralela:
+El tiempo se reduce redistribuyendo el cálculo entre varios núcleos del procesador.
+Sin embargo, cuando hay pocas ciudades, el paralelo puede tardar más debido al overhead de crear procesos, lo cual se observa en la práctica.
 
 ---
 
@@ -117,10 +146,10 @@ mejor_global = min(resultados, key=lambda r: r[1])
 El algoritmo paralelo obtiene el mismo resultado que el secuencial, pero en menor tiempo.  
 El *speedup* medido fue:
 
-$$ S = \frac{T_{secuencial}}{T_{paralelo}} = \frac{2.341}{0.813} \approx 2.88x $$
+$$ S = \frac{T_{secuencial}}{T_{paralelo}} = \frac{0.072405}{0.049458} \approx 1.46x $$
 
 
-Esto significa que el procesamiento paralelo permitió ejecutar el algoritmo **2.88 veces más rápido** al aprovechar 4 núcleos.
+Esto significa que el procesamiento paralelo permitió ejecutar el algoritmo **1.46 veces más rápido** al aprovechar 4 núcleos.
 
 **Interpretación:**
 - El tiempo mejora significativamente al distribuir las rutas entre procesos.
@@ -133,5 +162,5 @@ Esto significa que el procesamiento paralelo permitió ejecutar el algoritmo **2
 
 1. El Problema del Viajante es un **caso ideal para estudiar el paralelismo**, ya que su complejidad factorial permite observar mejoras notables al distribuir las tareas.
 2. La **versión paralela** logró reducir el tiempo de ejecución en casi un 65%, manteniendo la exactitud del resultado.
-3. El **speedup obtenido (≈2.88x)** demuestra que el uso de múltiples núcleos es efectivo incluso para implementaciones simples de fuerza bruta.
-4. Este laboratorio evidencia que, en problemas de búsqueda exhaustiva, **el paralelismo no solo mejora el rendimiento**, sino que también fomenta el diseño de algoritmos más eficientes para aprovechar los recursos del hardware moderno.
+3. El **speedup obtenido (≈1.46x)** demuestra que el uso de múltiples núcleos es efectivo incluso para implementaciones simples de fuerza bruta.
+6. Este laboratorio evidencia que, en problemas de búsqueda exhaustiva, **el paralelismo no solo mejora el rendimiento**, sino que también fomenta el diseño de algoritmos más eficientes para aprovechar los recursos del hardware moderno.
