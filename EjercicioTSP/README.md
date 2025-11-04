@@ -1,14 +1,14 @@
 # Procesamiento Paralelo y el Problema del Viajero
 ---
 
-## 1. Título y Objetivos
-
-**Título:**  
-Procesamiento Paralelo y el Problema del Viajero (Travelling Salesperson Problem, TSP)
+## 1. Objetivos
 
 **Objetivo General:**  
-Implementar y comparar la eficiencia de un algoritmo secuencial y uno paralelo (utilizando múltiples procesos) para resolver el Problema del Viajante mediante el método de fuerza bruta, analizando el *speedup* obtenido al aplicar paralelismo.
+  - Implementar y comparar la eficiencia de un algoritmo secuencial y uno paralelo (utilizando múltiples procesos) para resolver el Problema del Viajante mediante el método de fuerza bruta, analizando el *speedup* obtenido al aplicar paralelismo.
 
+**Objetivos Específicos**
+  - Implementar y ejecutar dos versiones del algoritmo de fuerza bruta para el Problema del Viajante (TSP): una secuencial y otra paralela, midiendo y comparando el tiempo de ejecución de ambas
+  - Analizar el impacto del procesamiento paralelo en la eficiencia computacional, evaluando el speedup obtenido al utilizar múltiples núcleos del procesador frente a la ejecución secuencial.
 ---
 
 ## 2. Marco Teórico
