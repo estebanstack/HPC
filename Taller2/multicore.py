@@ -46,7 +46,7 @@ def sobel_secuencial(gray):
     h = len(gray)
     w = len(gray[0]) if h else 0
     out = [[0]*w for _ in range(h)]
-    # Procesar solo 1..h-2 y 1..w-2 para no salirnos (como indica el taller)
+    # Procesar solo 1..h-2 y 1..w-2 para no salirnos
     for i in range(1, h-1):
         for j in range(1, w-1):
             out[i][j] = sobel_pixel(gray, i, j)
