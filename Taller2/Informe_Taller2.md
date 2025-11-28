@@ -46,15 +46,8 @@ El operador Sobel emplea dos matrices (kernels) 3x3, una para detectar bordes ve
 
 - **Salida Secuencial**: Genera una imagen en blanco y negro con los bordes detectados. <img width="1920" height="1280" alt="image" src="https://github.com/user-attachments/assets/1ea1cd87-4c1c-40f1-9643-476c8d1ab4d0" />
 
-- **Salida Paralela**: Similar, pero procesada en paralelo para mejorar el tiempo de ejecución.
+- **Salida Paralela**: Similar, pero procesada en paralelo para mejorar el tiempo de ejecución.<img width="1920" height="1280" alt="image" src="https://github.com/user-attachments/assets/4d29b853-9089-48f4-a935-19a418dff274" />
 
-#### Imágenes generadas:
-
-- **Secuencial**  
-  ![edges_seq.png](sandbox:/mnt/data/e923d645-15b8-4710-911c-3bec9eb45551.png)
-  
-- **Paralelo**  
-  ![edges_par.png](sandbox:/mnt/data/17ee816a-6887-4ba7-bb05-1375cb99b84f.png)
 
 ### Métricas y Comparación de Rendimiento
 
