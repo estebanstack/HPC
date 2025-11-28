@@ -38,9 +38,8 @@ El **procesamiento de video** involucra técnicas y algoritmos utilizados para m
 ## 4. Resultados
 
 ### Tiempo de Ejecución:
-- **Tiempo Secuencial**: [Tiempo en segundos]
-- **Tiempo Paralelo**: [Tiempo en segundos]
-  
+<img width="403" height="104" alt="image" src="https://github.com/user-attachments/assets/a64ae052-42b8-4f08-8481-3271d155152f" />
+
 ### Speedup:
 La mejora en el rendimiento se calcula como el cociente entre el tiempo secuencial y el tiempo paralelo:
 
