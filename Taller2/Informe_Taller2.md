@@ -1,4 +1,4 @@
-#Informe – Detección de Bordes con Algoritmo Sobel
+# 📄 Informe – Taller 2
 
 ## Objetivo
 
