@@ -1,4 +1,4 @@
-# 📄 Informe – Taller 2
+# 📄 Informe – Detección de Bordes con Algoritmo Sobel
 
 ## Objetivo
 
@@ -61,27 +61,26 @@ Conversión a gris: 0.045 s
 Sobel secuencial:  3.200 s
 Sobel paralelo:    0.750 s  (workers=4)
 Speedup (seq/par): 4.27x
+Conversión a gris: Tiempo para convertir la imagen RGB a escala de grises.
 
-## Conversión a gris
-Tiempo para convertir la imagen RGB a escala de grises.
+Sobel secuencial: Tiempo de ejecución para el algoritmo Sobel en un solo núcleo.
 
-## Sobel secuencial
-Tiempo de ejecución para el algoritmo Sobel en un solo núcleo.
+Sobel paralelo: Tiempo de ejecución utilizando múltiples núcleos.
 
-## Sobel paralelo
-Tiempo de ejecución utilizando múltiples núcleos.
-
-## Speedup
-Mejora lograda con la paralelización (secundario / paralelo).
+Speedup: Mejora lograda con la paralelización (secundario / paralelo).
+```
 
 ## Análisis de Rendimiento
 
-La paralelización del algoritmo Sobel en CPU utilizando múltiples núcleos logró una mejora significativa en el rendimiento. El speedup de aproximadamente 4.27x muestra cómo la división de trabajo entre los núcleos reduce el tiempo de procesamiento de la imagen. En imágenes más grandes, se espera que el speedup sea aún mayor.
+La paralelización del algoritmo Sobel en CPU utilizando múltiples núcleos logró una mejora significativa en el rendimiento. El *speedup* de aproximadamente **4.27x** muestra cómo la división de trabajo entre los núcleos reduce el tiempo de procesamiento de la imagen. En imágenes más grandes, se espera que el *speedup* sea aún mayor.
 
 ## Conclusiones
 
 ### Lecciones Aprendidas
+
 El uso de procesamiento paralelo mejora de manera notable el tiempo de ejecución, especialmente para imágenes de mayor tamaño.
 
 ### Mejoras
-Utilizar una GPU podría mejorar aún más el rendimiento. Además, se podrían explorar técnicas adicionales de paralelización como CUDA o OpenCL.
+
+- Utilizar una **GPU** podría mejorar aún más el rendimiento. Además, se podrían explorar técnicas adicionales de paralelización como **CUDA** o **OpenCL**.
+
